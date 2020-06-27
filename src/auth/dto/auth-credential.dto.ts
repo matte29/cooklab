@@ -1,5 +1,3 @@
-import { isString } from 'util';
-
 import { IsString, MinLength, MaxLength, Matches } from 'class-validator';
 
 export class AuthCredentialsDto {
