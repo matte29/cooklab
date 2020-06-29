@@ -2,7 +2,7 @@ import {
     BaseEntity,
     PrimaryGeneratedColumn,
     Column,
-    // ManyToOne,
+    ManyToOne,
     Entity,
 } from 'typeorm';
 import { User } from '../auth/user.entity';
@@ -24,22 +24,22 @@ export class Recipe extends BaseEntity {
     @Column()
     steps: string;
 
-    @Column('simple-array', { array: true })
-    ingredients: string[];
-
     @Column()
     hours: number;
 
     @Column()
     minutes: number;
 
-    // @ManyToOne(
-    //     type => User,
-    //     user => user.recipes,
-    //     { eager: false },
-    // )
-    author: User;
+    @Column()
+    ingredients: string;
 
     @Column()
     image: string;
+
+    @ManyToOne(
+        type => User,
+        user => user.recipes,
+        { eager: false },
+    )
+    user: User;
 }
