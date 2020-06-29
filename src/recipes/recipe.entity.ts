@@ -10,7 +10,7 @@ import { User } from '../auth/user.entity';
 @Entity()
 export class Recipe extends BaseEntity {
     @PrimaryGeneratedColumn()
-    id: number;
+    rid: number;
 
     @Column()
     title: string;
@@ -24,7 +24,7 @@ export class Recipe extends BaseEntity {
     @Column()
     steps: string;
 
-    @Column()
+    @Column('simple-array', { array: true })
     ingredients: string[];
 
     @Column()
