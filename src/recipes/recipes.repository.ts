@@ -1,9 +1,10 @@
-import { Repository } from 'typeorm';
+import { Repository, EntityRepository } from 'typeorm';
 import { Recipe } from './recipe.entity';
 import { User } from '../auth/user.entity';
 import { CreateRecipeDto } from './dto/create-recipe-dto';
 import { Logger, InternalServerErrorException } from '@nestjs/common';
 
+@EntityRepository(Recipe)
 export class RecipeRepository extends Repository<Recipe> {
     private logger = new Logger('RecipeRepository');
 

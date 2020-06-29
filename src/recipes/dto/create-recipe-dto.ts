@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsInt, Min } from 'class-validator';
 
-export class CreateTaskDto {
+export class CreateRecipeDto {
     @IsNotEmpty()
     title: string;
 
