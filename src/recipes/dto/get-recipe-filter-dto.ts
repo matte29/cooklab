@@ -15,5 +15,5 @@ export class GetRecipeFilterDto {
 
     @IsOptional()
     @Min(0)
-    user: number;
+    author: number;
 }
