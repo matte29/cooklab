@@ -20,6 +20,7 @@ export class RecipeRepository extends Repository<Recipe> {
             ingredients,
             hours,
             minutes,
+            image,
         } = createRecipeDto;
 
         const recipe = new Recipe();
@@ -30,7 +31,8 @@ export class RecipeRepository extends Repository<Recipe> {
         recipe.ingredients = ingredients;
         recipe.hours = hours;
         recipe.minutes = minutes;
-        recipe.author = user;
+        recipe.image = image;
+        recipe.user = user;
         try {
             await recipe.save();
         } catch (error) {
@@ -41,7 +43,7 @@ export class RecipeRepository extends Repository<Recipe> {
             throw new InternalServerErrorException();
         }
 
-        delete recipe.author;
+        delete recipe.user;
 
         return recipe;
     }
