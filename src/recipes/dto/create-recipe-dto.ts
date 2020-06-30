@@ -14,7 +14,7 @@ export class CreateRecipeDto {
     steps: string;
 
     @IsNotEmpty()
-    ingredients: string[];
+    ingredients: string;
 
     @IsNotEmpty()
     @IsInt()
@@ -24,4 +24,7 @@ export class CreateRecipeDto {
     @IsNotEmpty()
     @Min(0)
     minutes: number;
+
+    @IsNotEmpty()
+    image: string;
 }
