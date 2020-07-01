@@ -7,6 +7,9 @@ import {
     Get,
     Query,
     ValidationPipe,
+    Delete,
+    Param,
+    ParseIntPipe,
 } from '@nestjs/common';
 import { Recipe } from './recipe.entity';
 import { CreateRecipeDto } from './dto/create-recipe-dto';
@@ -47,5 +50,13 @@ export class RecipesController {
         );
 
         return this.recipesService.createRecipe(createRecipeDto, user);
+    }
+
+    @Delete('/:rid')
+    removeRecipe(
+        @Param('rid', ParseIntPipe) rid: number,
+        @GetUser() user: User,
+    ): Promise<void> {
+        return this.recipesService.removeRecipe(rid, user);
     }
 }
