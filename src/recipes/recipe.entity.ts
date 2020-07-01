@@ -42,4 +42,7 @@ export class Recipe extends BaseEntity {
         { eager: false },
     )
     user: User;
+
+    @Column()
+    userId: number;
 }
