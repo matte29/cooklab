@@ -13,7 +13,7 @@ export class RecipeRepository extends Repository<Recipe> {
         filterDto: GetRecipeFilterDto,
         user: User,
     ): Promise<Recipe[]> {
-        const { title, type, hours, author } = filterDto;
+        const { title, type, hours, userId } = filterDto;
         const query = this.createQueryBuilder('recipe');
 
         if (title) {
@@ -31,11 +31,11 @@ export class RecipeRepository extends Repository<Recipe> {
                 hours: `%${hours}%`,
             });
         }
-        // if (author) {
-        //     query.andWhere('(recipe.user LIKE :author)', {
-        //         author: `%${author}%`,
-        //     });
-        // }
+        if (userId) {
+            query.andWhere('(recipe.user LIKE :userId)', {
+                userId: `%${userId}%`,
+            });
+        }
 
         try {
             const recipes = await query.getMany();
