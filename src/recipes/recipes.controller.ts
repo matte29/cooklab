@@ -38,6 +38,11 @@ export class RecipesController {
         return this.recipesService.getRecipes(filterDto, user);
     }
 
+    @Get('/:rid')
+    getRecipeById(@Param('rid', ParseIntPipe) rid: number): Promise<Recipe> {
+        return this.recipesService.getRecipeById(rid);
+    }
+
     @Post('/')
     createRecipe(
         @Body() createRecipeDto: CreateRecipeDto,
