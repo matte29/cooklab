@@ -19,6 +19,19 @@ export class RecipesService {
     ): Promise<Recipe[]> {
         return this.recipeRepositoy.getRecipes(filterDto, user);
     }
+
+    async getRecipeById(rid: number): Promise<Recipe> {
+        const recipeFound = this.recipeRepositoy.findOne({
+            where: { rid },
+        });
+
+        if (!recipeFound) {
+            throw new NotFoundException(`Recipe with rid "${rid}" not found`);
+        }
+
+        return recipeFound;
+    }
+
     async createRecipe(
         createRecipeDto: CreateRecipeDto,
         user: User,
