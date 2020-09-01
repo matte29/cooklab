@@ -22,12 +22,6 @@ Set up a local postgres sql database and change the username and password in 'sr
 $ npm install
 ```
 
-or
-
-```bash
-$ yarn
-```
-
 ## Running the app
 
 ```bash
