@@ -7,7 +7,7 @@ import {
     OneToMany,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
-import { Recipe } from 'src/recipes/recipe.entity';
+import { Recipe } from '../recipes/recipe.entity';
 
 @Entity()
 @Unique(['username'])
